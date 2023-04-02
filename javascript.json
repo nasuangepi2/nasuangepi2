@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Udacity Nanodegree Style Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300|Roboto+Condensed:400,700|Inconsolata">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">HTML</a></li>
+            <li><a href="css.html">CSS</a></li>
+            <li><a href="javascript.html" class="active">JavaScript</a></li>
+            <li><a href="https://udacity.github.io/git-styleguide/">Git</a></li>
+        </ul>
+    </nav>
+
+
+    <h1>Udacity Frontend Nanodegree Style Guide</h1>
+
+    <section>
+        <h2>Introduction</h2>
+        <p>This style guide acts as the official guide to follow in your projects. Udacity evaluators will use this guide to grade your projects. There are many opinions on the "ideal" style in the world of Front-End Web Development. Therefore, in order to reduce the confusion on what style students should follow during the course of their projects, we urge all students to refer to this style guide for their projects.</p>
+    </section>
+
+    <section>
+        <h2>General Formatting Rules</h2>
+
+        <article>
+            <h3>
+                <a href="#whitespace" id="whitespace"><i class="fa fa-link"></i></a>
+                Trailing Whitespace
+            </h3>
+            <p>Remove trailing white spaces.</p>
+            <p>Trailing white spaces are unnecessary and can complicate diffs.</p>
+
+            <h4 class="not-recommended">Not Recommended:</h4>
+            <pre><code class="not-recommended">const name = "John Smith";__</code></pre>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">const name = "John Smith";</code></pre>
+
+            <p>If using Sublime Text, this can be done automatically each time you save a file by adding the following to your User Settings JSON file (you should be able to find this within Sublime Text's menu):</p>
+
+            <pre><code>"trim_trailing_white_space_on_save": true</code></pre>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#indentation" id="indentation"><i class="fa fa-link"></i></a>
+                Indentation
+            </h3>
+            <p>Indentation should be consistent throughout the entire file. Whether you choose to use tabs or spaces, or 2-spaces vs. 4-spaces - just be consistent!</p>
+        </article>
+    </section>
+
+    <section>
+        <h2>General Meta Rules</h2>
+
+        <article>
+            <h3>
+                <a href="#encoding" id="encoding"><i class="fa fa-link"></i></a>
+                Encoding
+            </h3>
+            <p>Use UTF-8 (no BOM).</p>
+            <p>Make sure your editor uses UTF-8 as character encoding, without a byte order mark.</p>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#comments" id="comments"><i class="fa fa-link"></i></a>
+                Comments
+            </h3>
+            <p>Use comments to explain code: What does it cover, what purpose does it serve, and why is the respective solution used or preferred?</p>
+            <p>You can optionally document your JavaScript functions with <a href="http://usejsdoc.org" target="_blank">JSDoc</a>, a documentation generator and standard for writing code comments. Its benefits include providing a specification to hold your comments to, and the command line <code>jsdoc</code> tool that will generate a website for your documentation. JSDoc provides many annotations you can use to document your code, but we only recommend that you utilize a small subset of the available options:</p>
+            <ul>
+                <li>
+                    <a href="http://usejsdoc.org/tags-class.html" target="_blank">@constructor</a>: used to document a class, a.k.a. a function meant to be called with the <code>new</code> keyword.
+                </li>
+                <li>
+                    <a href="http://usejsdoc.org/tags-description.html" target="_blank">@description</a>: used to describe your function; this tag allows you to include HTML markup if desired as well.
+                </li>
+                <li>
+                    <a href="http://usejsdoc.org/tags-param.html" target="_blank">@param</a>: used to describe the name, type, and description of a function parameter.
+                </li>
+                <li>
+                    <a href="http://usejsdoc.org/tags-returns.html" target="_blank">@returns</a>: document the type and description of a function's return value.
+                </li>
+            </ul>
+            <p>
+                This example shows how to document a class constructor (note the use of <code>/**</code> to start the comment block; that's important):
+            </p>
+            <pre>
+<code>/**
+* @description Represents a book
+* @constructor
+* @param {string} title - The title of the book
+* @param {string} author - The author of the book
+*/
+function Book(title, author) {
+    ...
+}</code></pre>
+            <p>
+                And here is a function with parameters that returns a value; note the lack of description for the parameters, since in this case they're pretty self-explanatory:
+            </p>
+            <pre>
+<code>/**
+* @description Adds two numbers
+* @param {number} a
+* @param {number} b
+* @returns {number} Sum of a and b
+*/
+function sum(a, b) {
+    return a + b;
+}
+</code></pre>
+            <p>
+                Feel free to go above and beyond and use more annotations if desired.
+            </p>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#action-items" id="action-items"><i class="fa fa-link"></i></a>
+                Action Items
+            </h3>
+            <p>Mark todos and action items with <code>TODO:</code>.</p>
+            <p>Highlight todos by using the keyword <code>TODO</code> only, not other formats like <code>@@</code>. Append action items after a colon like this: <code>TODO: action item</code>.</p>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">// TODO: add other fruits</code></pre>
+        </article>
+    </section>
+
+    <section>
+        <h2>JavaScript Language Rules</h2>
+
+        <article>
+            <h3>
+                <a href="#var" id="var"><i class="fa fa-link"></i></a>
+                Variable Declaration
+            </h3>
+
+            <p>There are three ways to declare a variable in JavaScript:</p>
+
+            <ul>
+                <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const" target="_blank">const</a></code></li>
+                <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let" target="_blank">let</a></code></li>
+                <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var" target="_blank">var</a></code></li>
+            </ul>
+
+            <p>
+                When declaring variables, you should declare them using the keywords in the order listed above. Declare your variables with <code>const</code>, first. If you find that you need to reassign the variable later, use <code>let</code>. There isn't a good reason to use the <code>var</code> keyword anymore for variable declaration.
+            </p>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#semicolons" id="semicolons"><i class="fa fa-link"></i></a>
+                Semicolons
+            </h3>
+            <p>Always use semicolons.</p>
+            <p>Relying on implicit insertion can cause subtle, hard to debug problems. Semicolons should be included at the end of function expressions, but not at the end of function declarations.</p>
+
+            <h4 class="not-recommended">Not Recommended:</h4>
+            <pre><code class="not-recommended">const foo = () => {
+    return true // Missing semicolon
+} // Missing semicolon
+
+function foo() {
+    return true;
+}; // Extra semicolon</code></pre>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">const foo = () => {
+    return true;
+};
+
+function foo() {
+    return true;
+}</code></pre>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#wrapper-objects" id="wrapper-objects"><i class="fa fa-link"></i></a>
+                Wrapper Objects for Primitive Types
+            </h3>
+            <p>There's no reason to use wrapper objects for primitive types, plus they're dangerous. However, type casting is okay.</p>
+
+            <h4 class="not-recommended">Not Recommended:</h4>
+            <pre><code class="not-recommended">const x = new Boolean(0);
+if (x) {
+    alert('hi');    // Shows 'hi' because typeof x is truthy object
+}</code></pre>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">const x = Boolean(false);
+if (x) {
+    alert('hi');    // Show 'hi' because typeof x is a falsey boolean
+}</code></pre>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#closures" id="closures"><i class="fa fa-link"></i></a>
+                Closures
+            </h3>
+            <p>Yes, but be careful.</p>
+            <p>The ability to create closures is perhaps the most useful and often overlooked feature in JavaScript. One thing to keep in mind, however, is that a closure keeps a pointer to its enclosing scope. As a result, attaching a closure to a DOM element can create a circular reference and thus, a memory leak.</p>
+
+            <h4 class="not-recommended">Not Recommended:</h4>
+            <pre><code class="not-recommended">function foo(element, a, b) {
+    element.onclick = function() { /* uses a and b */ }
+}</code></pre>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">function foo(element, a, b) {
+    element.onclick = bar(a, b);
+}
+
+function bar(a, b) {
+    return function() { /* uses a and b */ }
+}</code></pre>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#for-in-loop" id="for-in-loop"><i class="fa fa-link"></i></a>
+                for, for-in and forEach
+            </h3>
+            <h4>Array</h4>
+            <p><code>forEach</code> or <code>for</code> loops are preferred over <code>for-in</code> loops when iterating over an array.</p>
+
+            <h5 class="not-recommended">Not Recommended:</h5>
+            <pre><code class="not-recommended">myArray = ['a', 1, 'etc'];
+for (const indexNum in myArray) {
+    console.log(myArray[indexNum]);
+}
+
+const starWars = {
+    "creatures": [
+        {
+            "name": "bantha",
+            "face": "furry"
+        },
+        {
+            "name": "loth-cat",
+            "face": "toothy"
+        }
+    ]
+};
+for (const i in starWars.creatures) {
+    console.log(starWars.creatures[i].name);
+    console.log(starWars.creatures[i].face);
+};
+</code></pre>
+            <h5 class="recommended">Recommended:</h5>
+            <pre><code class="recommended">mySimpleArray = ['a', 1, 'etc'];
+mySimpleArray.forEach(function(val) {
+    console.log(val);
+});
+
+const starWars = {
+    "creatures": [
+        {
+            "name": "bantha",
+            "face": "furry"
+        },
+        {
+            "name": "loth-cat",
+            "face": "toothy"
+        }
+    ]
+};
+starWars.creatures.forEach(function(creature) {
+    console.log(creature.name);
+    console.log(creature.face);
+});
+
+</code></pre>
+<p>// or</p>
+            <pre><code class="recommended">myArray = ['a', 1, 'etc'];
+for (let indexCount = 0; indexCount < myArray.length; indexCount++) {
+    console.log(myArray[indexCount]);
+};</code></pre>
+
+            <h4>Object</h4>
+            <p><code>for-in</code> loops are used to loop over keys in an object. This can be error prone because <code>for-in</code> does not loop from <code>0</code> to <code>length - 1</code> but over all the present keys in the object and its prototype chain.</p>
+            <p>If possible, organize data so it is not necessary to iterate over objects. If that isn't possible, wrap the content of the <code>for-in</code> loop in a conditional statement to prevent it from from iterating over the prototype chain.</p>
+            <h5 class="not-recommended">Not Recommended:</h5>
+            <pre><code class="not-recommended">myObj = {'firstName':'Ada','secondName':'Lovelace'};
+for (const key in myObj) {
+    console.log(myObj[key]);
+}</code></pre>
+
+
+            <h5 class="recommended">Recommended:</h5>
+            <pre><code class="recommended">myObj = {'firstName':'Ada','lastName':'Lovelace'};
+for (const key in myObj) {
+    if (myObj.hasOwnProperty(key)) {
+        console.log(myObj[key]);
+    }
+}</code></pre>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#string-literals" id="string-literals"><i class="fa fa-link"></i></a>
+                Multiline String Literals
+            </h3>
+            <p>Do not use.</p>
+
+            <p>The whitespace at the beginning of each line can't be safely stripped at compile time; whitespace after the slash will result in tricky errors; and while most script engines support this, it is not part of the specification.</p>
+
+            <h4 class="not-recommended">Not Recommended:</h4>
+            <pre><code class="not-recommended">const myString = 'A rather long string of English text, an error message \
+    actually that just keeps going and going -- an error \
+    message that is really really long.';</code></pre>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">const myString = 'A rather long string of English text, an error message' +
+    'actually that just keeps going and going -- an error' +
+    'message that is really really long.';</code></pre>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#arr-obj-literals" id="arr-obj-literals"><i class="fa fa-link"></i></a>
+                Array and Object Literals
+            </h3>
+            <p>Use Array and Object literals instead of Array and Object constructors.</p>
+
+            <h4 class="not-recommended">Not Recommended:</h4>
+            <pre><code class="not-recommended">const myArray = new Array(x1, x2, x3);
+
+const myObject = new Object();
+myObject.a = 0;</code></pre>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">const myArray = [x1, x2, x3];
+
+const myObject = {
+    a: 0
+};</code></pre>
+        </article>
+    </section>
+
+    <section>
+        <h2>JavaScript Style Rules</h2>
+
+        <article>
+            <h3>
+                <a href="#naming" id="naming"><i class="fa fa-link"></i></a>
+                Naming
+            </h3>
+            <p>In general, <code>functionNamesLikeThis</code>, <code>variableNamesLikeThis</code>, <code>ClassNamesLikeThis</code>, <code>methodNamesLikeThis</code>, <code>CONSTANT_VALUES_LIKE_THIS</code> and <code>filenameslikethis.js</code>.</p>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#formatting" id="formatting"><i class="fa fa-link"></i></a>
+                Code Formatting
+            </h3>
+            <p>Because of implicit semicolon insertion, always start your curly braces on the same line as whatever they're opening.</p>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">if (something) {
+    // Do something
+} else {
+    // Do something else
+}</code></pre>
+
+            <p>Single-line array and object initializers are allowed when they fit on one line. There should be no spaces after the opening bracket or before the closing bracket:</p>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">const array = [1, 2, 3];
+const object = {a: 1, b: 2, c: 3};</code></pre>
+
+            <p>Multiline array and object initializers are indented one-level, with the braces on their own line, just like blocks:</p>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">const array = [
+    'Joe &lt;joe@email.com&gt;',
+    'Sal &lt;sal@email.com&gt;',
+    'Murr &lt;murr@email.com&gt;',
+    'Q &lt;q@email.com&gt;'
+];
+
+const object = {
+    id: 'foo',
+    class: 'foo-important',
+    name: 'notification'
+};</code></pre>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#parentheses" id="parentheses"><i class="fa fa-link"></i></a>
+                Parentheses
+            </h3>
+            <p>Only where required.</p>
+            <p>Use sparingly and in general only where required by the syntax and semantics.</p>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#strings" id="strings"><i class="fa fa-link"></i></a>
+                Strings
+            </h3>
+            <p>For consistency single-quotes (<code>'</code>) are preferred over double-quotes (<code>"</code>). This is helpful when creating strings that include HTML:</p>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">const element = '&lt;button class="btn"&gt;Click Me&lt;/button&gt;';</code></pre>
+
+            <p>** Notable exception to this is in JSON objects: double quotes are required per the <a href="http://www.json.org/">JSON specification</a></p>
+        </article>
+    </section>
+
+    <section>
+        <h2>Tips and Tricks</h2>
+
+        <article>
+            <h3>
+                <a href="#truthy-falsy" id="truthy-falsy"><i class="fa fa-link"></i></a>
+                True and False Boolean Expressions
+            </h3>
+            <p>The following are all false in boolean expressions:</p>
+            <ul>
+                <li><code>null</code></li>
+                <li><code>undefined</code></li>
+                <li><code>''</code> the empty string</li>
+                <li><code>0</code> the number</li>
+            </ul>
+
+            <p>But be careful, because these are all true:</p>
+            <ul>
+                <li><code>'0'</code> the string</li>
+                <li><code>[]</code> the empty array</li>
+                <li><code>{}</code> the empty object</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#ternary-operator" id="ternary-operator"><i class="fa fa-link"></i></a>
+                Conditional Ternary Operator
+            </h3>
+            <p>The conditional ternary operator is recommended, although not required, for writing concise code. Instead of this:</p>
+
+            <h4 class="not-recommended">Not Recommended:</h4>
+            <pre><code class="not-recommended">if (val) {
+    return foo();
+} else {
+    return bar();
+}</code></pre>
+
+            <p>You can write this:</p>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">return val ? foo() : bar();</code></pre>
+        </article>
+
+        <article>
+            <h3>
+                <a href="#and-or" id="and-or"><i class="fa fa-link"></i></a>
+                && and ||
+            </h3>
+            <p>These binary boolean operators are short-circuited and evaluate to the last evaluated term. <code>||</code> has been called the default operator because instead of writing this:</p>
+
+            <h4 class="not-recommended">Not Recommended:</h4>
+            <pre><code class="not-recommended">const foo = (name) => {
+    let theName;
+    if (name) {
+        theName = name;
+    } else {
+        theName = 'John';
+    }
+};</code></pre>
+
+            <p>You can write this:</p>
+
+            <h4 class="recommended">Recommended:</h4>
+            <pre><code class="recommended">const foo = (name) => {
+    const theName = name || 'John';
+};</code></pre>
+
+        <p><code>&&</code> is also used for shortening code. For instance, instead of this:</p>
+
+        <h4 class="not-recommended">Not Recommended:</h4>
+        <pre><code class="not-recommended">if (node) {
+    if (node.kids) {
+        console.log(node.kids);
+    }
+}</code></pre>
+
+        <p>You can do this:</p>
+
+        <h4 class="recommended">Recommended:</h4>
+        <pre><code class="recommended">if (node && node.kids) {
+    console.log(node.kids);
+}</code></pre>
+        </article>
+    </section>
+</body>
+</html>
